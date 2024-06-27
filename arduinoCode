@@ -1,0 +1,52 @@
+#include <FastLED.h>
+#include <stdlib.h>
+#define LED_PIN 13
+#define NUM_LEDS 300
+
+CRGB leds[NUM_LEDS];
+int counter = 0;
+int note;
+
+void setup() {
+  FastLED.addLeds<WS2812B, LED_PIN, GRB>(leds, NUM_LEDS);
+  FastLED.clear();
+  FastLED.setBrightness(100);  // Set initial brightness level (0-255)
+  Serial.begin(9600);  // Set the baud rate for serial communication
+  FastLED.show();
+  
+
+}
+
+void loop() {
+  if (Serial.available()) 
+  {
+    byte data = Serial.read();  // Read the incoming byte
+
+    note = (int)data + 191;
+    if (note == 280)
+    {
+      counter +=1;
+      if (counter == 4){
+        FastLED.clear();
+        FastLED.show();
+        counter = 1;
+        }
+      }
+    else
+    {
+    switch (counter)
+      {
+        case 1:
+          leds[note] = CRGB::Green;
+          break;
+        case 2:
+          //leds[note] = CRGB::Yellow;
+          break;
+        case 3:
+          //leds[note] = CRGB::Blue;
+          break;
+      }
+      FastLED.show();     
+    }
+  }
+}
