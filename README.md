@@ -21,4 +21,4 @@ This project reads MIDI files and controls an LED strip to indicate how to play 
 
 Run the main.py file with the name and absolute path of the midi you want to play as an argument, e.g.
 ```bash
-python3 main.py 'your file.py'
+python3 main.py 'your file.mid'
