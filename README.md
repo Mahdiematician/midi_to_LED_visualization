@@ -17,5 +17,6 @@ This project reads MIDI files and controls an LED strip to indicate how to play 
 2. **Python Environment**: Install required libraries using:
    ```bash
    pip install mido pyserial
-3. **download midi files** Download midi files e.g. from here: https://bitmidi.com/
+4. **download midi files** Download midi files e.g. from here: https://bitmidi.com/
 
+Run the main.py file with the name and absolute path of the midi you want to play as an argument.
